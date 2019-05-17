@@ -1,0 +1,60 @@
+﻿@using WebApplication1.Models
+
+@model SanPham
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutCuaTui.cshtml";
+}
+<style>
+    #create{
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+</style>
+ 
+<div id="create">
+    <h2>Create</h2>
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            @Html.LabelFor(m => m.maSP)
+            @Html.TextBoxFor(m => m.maSP)
+         
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m => m.tenSP)
+            @Html.TextBoxFor(m => m.tenSP)
+      
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m => m.namSX)
+            @Html.TextBoxFor(m => m.namSX)
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m => m.GiaSP)
+            @Html.TextBoxFor(m => m.GiaSP)
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m => m.hinhAnh)
+            @Html.TextBoxFor(m => m.hinhAnh, new {@type = "file" })
+        </div>
+        <br />
+        <div>
+            @Html.LabelFor(m => m.maLoai)
+            @Html.DropDownListFor(m => m.maLoai, (SelectList)ViewBag.Loai, "Chosse Loại")
+        </div>
+        <br />
+        <div>
+            <input type="submit" value="Create" />
+        </div>
+
+    }
+</div>
+<div>
+    @Html.ActionLink("Quay Lai","Index")
+</div>

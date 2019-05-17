@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <style>
+        .tong{
+            width:1200px;
+            height:auto;
+
+        }
+        .banner{
+            width:1200px;
+            height:100px;
+            background-color:aquamarine;
+        }
+        .noidung{
+            width:1200px;
+            height:auto;
+            border:1px solid;
+        }
+        .col-md-3{
+            height:auto;
+            border:1px solid;
+        }
+        .col-md-9{
+            height:auto;
+            border:1px solid;
+        }
+        .footer{
+            width:1200px;
+            height:50px;
+            border:1px solid;
+        }
+        .khung{
+            width:350px;
+            height:auto;
+            float:left;
+
+        }
+    </style>
+    <div class="tong">
+        <div class="banner">
+            <div id="sasa"style="text-align:center">
+                @Html.Action("GioHangParti", "GioHang")
+            </div>
+
+        </div>
+        <div class="noidung">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-9">
+               @RenderBody()
+            </div>
+
+        </div>
+        <div class="footer">
+
+
+        </div>
+    </div>
+    <div>
+    </div>
+</body>
+</html>

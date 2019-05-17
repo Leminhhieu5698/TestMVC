@@ -1,0 +1,24 @@
+﻿@using WebApplication1.Models;
+
+@model List<LoaiSP>
+
+<style>
+    ul li{
+        
+    }
+</style>
+
+<div>
+    Chọn Loại
+</div>
+@foreach(var h in Model)
+{
+    <ul>
+        <li style="">
+            <a href="@Url.Action("Sanphaminloai", new {ma = @h.maLoai })">
+                @h.tenLoai
+            </a>
+        </li>
+    </ul>
+   
+}

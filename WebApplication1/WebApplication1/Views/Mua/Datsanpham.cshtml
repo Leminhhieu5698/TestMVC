@@ -1,0 +1,68 @@
+﻿@model List<WebApplication1.Models.MuaSP>
+
+
+@{
+    ViewBag.Title = "Datsanpham";
+    Layout = "~/Views/Shared/_LayoutCuaTui.cshtml";
+}
+<style>
+    .table tr th {
+        border: 1px solid #ff6a00;
+    }
+    th{
+        color: #ffffff;
+        background: #0094ff;
+    }
+    td{
+         border: 1px solid #ff6a00;
+    }
+</style>
+<h2>Danh sách sản phẩm chọn mua</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Mã Sản Phẩm
+        </th>
+        <th>
+            Tên SP
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>Số Lượng</th>
+        <th>Thành Tiền</th>
+    </tr>
+    @foreach(var h in Model)
+    {
+        <tr>
+            <td>@h.xmaSP</td>
+            <td>@h.xtenSP</td>
+            <td>@h.xGiaSP</td>
+            @using (Html.BeginForm("Capnhat","Mua", new {@ma = h.xmaSP }))
+            {
+                <td>@Html.TextBox("txtSoLuong", h.xSL, new {@size = 4 })</td>
+                <td>
+                    @h.xTT
+                </td>
+                <td>
+                    <input id="hang" type="submit" value="Cập Nhật" />
+                </td>
+            }
+            <td>
+                @using (Html.BeginForm("Xoasanpham", "Mua", new { @ma = h.xmaSP }))
+                {
+                    <input id="hang" type="submit" value="Xóa" />
+                }
+
+            </td>
+
+          
+
+        </tr>
+    }
+
+    <tr>
+        Tổng thành tiền : @ViewBag.Tien
+    </tr>
+</table>

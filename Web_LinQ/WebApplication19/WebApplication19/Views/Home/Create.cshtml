@@ -1,0 +1,60 @@
+﻿@model WebApplication19.Models.Sach
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    <tr>
+        <td>Tieu de</td>
+        <td>@Html.TextBox("tieu")
+        @ViewData["Loi2"]
+        </td>
+    </tr><br/>
+    <tr>
+        <td>Tom tat</td>
+        <td>@Html.TextBox("tom")
+        @ViewData["Loi3"]
+        </td>
+    </tr><br/>
+    <tr>
+        <td>Noi DUng</td>
+        <td>@Html.TextBox("noi")
+        @ViewData["loi4"]
+        </td>
+    </tr><br/>
+    <tr>
+        <td>
+            Tac gia
+        </td>
+        <td>@Html.TextBox("tac")
+        @ViewData["Loi5"]
+        </td>
+    </tr><br/>
+    <tr>
+        <td>Gia</td>
+        <td>@Html.TextBox("gia")
+        @ViewData["Loi6"]
+        </td>
+    </tr><br/>
+    <tr>
+        <td>hinh anh</td>
+        <td>@Html.TextBox("hinh")
+        @ViewData["Loi7"]
+        </td>
+        
+    </tr><br/>
+    <tr>
+        <td>ma loai</td>
+        @*<td>  @Html.DropDownList("mal",(SelectList)ViewBag.Loai, "Chon loai sach")</td>*@
+    @Html.DropDownList("mal")
+
+        
+    </tr><br/>
+    <input type="submit"value="Save" />
+}

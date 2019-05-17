@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebApplication19.Models.Sach>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@foreach (var item in Model)
+{
+    <div class="khung">
+        <div>Ten sach:@item.tieude</div>
+        <img src="../../Image/@item.hinhanh"width="250"height="150"><br/>
+        @Html.ActionLink("Xem chi tiet", "Details", new {id=item.masach })
+    </div>
+}

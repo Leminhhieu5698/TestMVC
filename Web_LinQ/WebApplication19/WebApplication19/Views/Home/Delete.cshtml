@@ -1,0 +1,18 @@
+﻿@model WebApplication19.Models.Sach
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>ARE YOU WANT TO DELETE</h2>
+@using (Html.BeginForm())
+{
+    <img src="../../Image/@Model.hinhanh"width="300"height="300" />
+    <div>Tieu de:@Model.tieude</div>
+    <div>Noi dung:@Model.noidung</div>
+    <div>Tac gia:@Model.tacgia</div>
+    <div>Gia:@Model.giasach</div>
+    <div>the loai:@Model.maloai</div>
+    <input type="submit"value="Xoa" />
+}

@@ -1,0 +1,45 @@
+﻿@model IEnumerable <WebApplication1.Models.SanPham>
+
+@{
+    ViewBag.Title = "Sanphaminloai";
+    Layout = "~/Views/Shared/_LayoutCuaTui.cshtml";
+}
+<style>
+    #index{
+        text-align: center;
+        height:250px;
+        width: 200px;
+        
+        border: 1px solid #0094ff;
+        border-radius: 14px;
+        float: left;
+        margin: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    </style>
+
+
+@foreach (var h in Model)
+{
+    <div id="index">
+        <img src="../Images/@h.hinhAnh" width="130" height="100" />
+        <div>
+       
+               <div>
+                   Tên Sản Phẩm:  @h.tenSP
+            </div> 
+        
+            <div>
+                <a href="@Url.Action("ThemSP","Mua", new {ma = @h.maSP, @strUrl = Request.Url.ToString() })">
+                    <input id="hang" type="button" value="Mua" class="btn btn-primary" />
+                </a>
+            </div>
+               
+       
+            <a href="@Url.Action("Details","Home",new {ma = @h.maSP })">Xem Chi tiết</a>
+            
+        </div>
+    </div>
+}
+

@@ -1,0 +1,44 @@
+﻿@model WebApplication1.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutCuaTui.cshtml";
+}
+
+<h2>Do you want delete?</h2>
+
+<style>
+    #detail {
+    }
+
+    #aa {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+</style>
+<a href="@Url.Action("Details","Home",new {ma = @Model.maSP })"><img src="../Images/@Model.hinhAnh" width="200" height="130" /></a>
+<div id="detail">
+    <ul style="null">
+        <li>
+            Mã Sản Phẩm: @Html.DisplayFor(model => model.maSP)
+        </li>
+        <li>
+            Tên SP: @Html.DisplayFor(model => model.tenSP)
+        </li>
+        <li>
+            Giá: @Html.DisplayFor(model => model.GiaSP)
+        </li>
+        <li>
+            Năm Sản Xuất: @Html.DisplayFor(model => model.namSX)
+        </li>
+    </ul>
+   
+</div>
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<div>
+    @Html.ActionLink("Quay Lai", "Index")
+</div>

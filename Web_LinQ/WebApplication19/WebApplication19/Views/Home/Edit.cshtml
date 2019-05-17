@@ -1,0 +1,65 @@
+﻿@model WebApplication19.Models.Sach
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <tr>
+        <td>Tieu de</td>
+        <td>
+            @Html.TextBoxFor(m=>m.tieude)
+        @ViewData["Loi2"]
+    </td>
+</tr><br />
+    <tr>
+        <td>Tom tat</td>
+        <td>
+            @Html.TextBoxFor(m=>m.tomtat)
+        @ViewData["Loi3"]
+    </td>
+</tr><br />
+    <tr>
+        <td>Noi DUng</td>
+        <td>
+            @Html.TextBoxFor(m=>m.noidung)
+        @ViewData["loi4"]
+    </td>
+</tr><br />
+    <tr>
+        <td>
+            Tac gia
+        </td>
+        <td>
+            @Html.TextBoxFor(m=>m.tacgia)
+        @ViewData["Loi5"]
+    </td>
+</tr><br />
+    <tr>
+        <td>Gia</td>
+        <td>
+            @Html.TextBoxFor(m=>m.giasach)
+        @ViewData["Loi6"]
+    </td>
+</tr><br />
+    <tr>
+        <td>hinh anh</td>
+        <td>
+            @Html.TextBoxFor(m=>m.hinhanh)
+        @ViewData["Loi7"]
+    </td>
+
+</tr><br />
+    <tr>
+        <td>ma loai</td>
+      @*<td>  @Html.DropDownList("mal", (SelectList)ViewBag.maloai, "Chon loai sach")</td>*@
+    @Html.DropDownList("mal")
+
+
+    </tr><br />
+    <input type="submit" value="Save" />
+}

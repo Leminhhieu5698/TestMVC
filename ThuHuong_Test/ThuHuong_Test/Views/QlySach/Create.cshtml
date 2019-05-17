@@ -1,0 +1,39 @@
+﻿@model ThuHuong_Test.Models.Sach
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/share/_LayoutPageQly.cshtml";
+}
+
+<h2>Create</h2>
+@using(Html.BeginForm("Create","QlySach",FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <table class="table">
+        <tr>
+            <td>@Html.Label("Nhap Ma")</td>
+            <td>@Html.TextBoxFor(m=>m.maSach,new { @placeHolder = "Moi Nhap Ma", @size = "50" })</td>
+            <td>@Html.ValidationMessageFor(m=>m.maSach)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Tieu De")</td>
+            <td>@Html.TextBoxFor(m => m.tieuDe, new { @placeHolder = "Moi Nhap Tieu De", @size = "50"})</td>
+            <td>@Html.ValidationMessageFor(m => m.tieuDe)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("Chon Ten Loai Sach:")</td>
+            <td>@Html.DropDownListFor(m=>m.maLoai,(SelectList)ViewBag.TenLSach)</td>
+          
+        </tr>
+        <tr>
+            <td>@Html.Label("Chon Hinh Anh")</td>
+            <td>@Html.TextBoxFor(m => m.hinhAnh, new { @type = "file" })</td>       
+        </tr>        
+    </table>
+    <input type="submit" value="Them Sach" /><br />
+    <div>
+        <a href="@Url.Action("Index","QlySach")">Back To Index</a>
+    </div>
+}
+
+

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLSach" Class="DataClasses2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ADMIN\SQLEXPRESS;Initial Catalog=QLSach;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QLSachConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Sach" Member="Saches">
+    <Type Name="Sach">
+      <Column Name="masach" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="tieude" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="tomtat" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="noidung" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="tacgia" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="giasach" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="hinhanh" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="maloai" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Association Name="LOAISACH_Sach" Member="LOAISACH" ThisKey="maloai" OtherKey="maloai" Type="LOAISACH" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAISACH" Member="LOAISACHes">
+    <Type Name="LOAISACH">
+      <Column Name="maloai" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tenloai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LOAISACH_Sach" Member="Saches" ThisKey="maloai" OtherKey="maloai" Type="Sach" />
+    </Type>
+  </Table>
+</Database>

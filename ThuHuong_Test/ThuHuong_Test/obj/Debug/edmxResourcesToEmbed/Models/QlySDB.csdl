@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ThuHuong_TestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoaiSach">
+    <Key>
+      <PropertyRef Name="maLoai" />
+    </Key>
+    <Property Name="maLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tenLoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Saches" Relationship="Self.FK_Sach_LoaiSach" FromRole="LoaiSach" ToRole="Sach" />
+  </EntityType>
+  <EntityType Name="Sach">
+    <Key>
+      <PropertyRef Name="maSach" />
+    </Key>
+    <Property Name="maSach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tieuDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="maLoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hinhAnh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LoaiSach" Relationship="Self.FK_Sach_LoaiSach" FromRole="Sach" ToRole="LoaiSach" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Sach_LoaiSach">
+    <End Role="LoaiSach" Type="Self.LoaiSach" Multiplicity="0..1" />
+    <End Role="Sach" Type="Self.Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSach">
+        <PropertyRef Name="maLoai" />
+      </Principal>
+      <Dependent Role="Sach">
+        <PropertyRef Name="maLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ThuHuong_TestEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoaiSaches" EntityType="Self.LoaiSach" />
+    <EntitySet Name="Saches" EntityType="Self.Sach" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Sach_LoaiSach" Association="Self.FK_Sach_LoaiSach">
+      <End Role="LoaiSach" EntitySet="LoaiSaches" />
+      <End Role="Sach" EntitySet="Saches" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

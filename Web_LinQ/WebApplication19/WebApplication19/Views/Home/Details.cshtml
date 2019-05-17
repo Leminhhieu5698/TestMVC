@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebApplication19.Models.Sach>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<h2>Details</h2>
+@foreach (var item in Model)
+{
+    <div>Ten sach:@item.tieude </div>
+    <img src="../../Image/@item.hinhanh" width="250" height="150" /><br />
+        <div>Noi Dung:@item.noidung</div>
+        <div>tac gia:@item.tacgia</div>
+        <div>Gia:@item.giasach VND</div>
+        <div>@item.LOAISACH.tenloai</div>
+        <div>
+            @Html.ActionLink("Them moi", "Create")
+
+        </div>
+        <div>@Html.ActionLink("Cap nhat", "Edit", new { id = item.masach })</div>
+        <div>@Html.ActionLink("Delete","Delete",new {id=item.masach })</div>
+        <div><a href="@Url.Action("ThemGioHang","GioHang",new {id=item.masach,@strUrl=Request.Url.ToString()})">Mua Hàng</a></div>
+
+
+}

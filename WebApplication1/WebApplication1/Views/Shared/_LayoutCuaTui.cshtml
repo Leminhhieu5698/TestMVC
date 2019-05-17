@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<link href="~/CSS/mycss.css" rel="stylesheet" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div id="All">
+
+
+        <header>
+            <img src="../Images/Banner.jpg" width="100%" height="100%"/>
+        </header>
+        <nav>
+            <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+            |
+            @{ 
+                if(Request.Cookies["MyCookies"] != null)
+                {
+                    HttpCookie ck = Request.Cookies["MyCookies"];
+                    Session["maTaiKhoan"] = ck["name"].ToString();
+                }
+            }
+            @if(Session["maTaiKhoan"] != null)
+            {
+                @Session["maTaiKhoan"].ToString()
+                <a href="@Url.Action("Doimatkhau","NguoiDung")">| Đổi mật khẩu</a>
+                <a href="@Url.Action("DangXuat","NguoiDung", new { @strURL = Request.Url.ToString() } )">| Đăng Xuất</a>
+            }
+
+            @*@Html.ActionLink("Đăng Ký","DangKy")*@
+        </nav>
+        <div id="gh">
+          <img src="../Images/giohang.png" width="20" height="20" />  @Html.Action("sanphammuaPartial","Mua")
+        </div>
+        <aside>
+            @Html.Action("Loaipartial","Loai")
+            <div id="log">
+                @using (Html.BeginForm("DangNhap", "NguoiDung", new {@strURL = Request.Url.ToString() }))
+                {
+                    @Html.Label("Tên Đăng Nhập:")<br />
+                     @Html.TextBox("txtUser")
+                        
+                        <br />
+                  @Html.Label("  Mật Khẩu: ")<br />
+                    @Html.TextBox("txtpass")
+                        <br />
+                        <br />
+                        <button type="submit" value="btnDangNhap">Sign In</button>
+               // @ViewBag.TB = "Tên tài khoản hoặc mật khẩu không đúng";
+                }
+              
+               
+            </div>
+        </aside>
+        <section>
+           
+            @RenderBody()
+
+        </section>
+        <footer>
+            Hieu Dep Trai
+        </footer>
+    </div>
+</body>
+</html>

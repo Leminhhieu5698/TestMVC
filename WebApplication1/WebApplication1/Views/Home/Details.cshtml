@@ -1,0 +1,45 @@
+﻿@using WebApplication1.Models
+
+@model SanPham
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCuaTui.cshtml";
+}
+<style>
+
+    #detail{
+        
+    }
+    #aa{
+       padding-top: 10px;
+        padding-left: 10px;
+    }
+</style>
+<div id="aa">
+   <h2>
+       Chi tiết sản phẩm
+    </h2> 
+</div>
+<a href="@Url.Action("Details","Home",new {ma = @Model.maSP })"><img src="../Images/@Model.hinhAnh" width="200" height="130" /></a>
+<div id="detail">
+    <ul style="null">
+        <li>
+            Mã Sản Phẩm: @Html.DisplayFor(model => model.maSP)
+        </li>
+        <li>
+            Tên SP: @Html.DisplayFor(model => model.tenSP)
+        </li>
+        <li>
+            Giá: @Html.DisplayFor(model => model.GiaSP)
+        </li>
+        <li>
+            Năm Sản Xuất: @Html.DisplayFor(model => model.namSX)
+        </li>
+    </ul>
+    <div>
+        <a href="@Url.Action("Edit","Home",new {@ma = Model.maSP })">Chỉnh Sửa</a>
+    </div>
+    <div>
+        <a href="@Url.Action("Delete","Home",new {@ma = Model.maSP })">Xóa</a>
+    </div>
+</div>
